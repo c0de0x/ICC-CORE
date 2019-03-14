@@ -7,10 +7,10 @@ tests
 *.a
 !.gitignore
 
-# Makefile
+Makefile
 configure
 .libs/
-# Makefile.in
+Makefile.in
 aclocal.m4
 autom4te.cache/
 config.log
