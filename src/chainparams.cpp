@@ -130,7 +130,7 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1552631332;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 15355169;
+        genesis.nNonce = 17441720;
 
         if(genesis.GetHash() != uint256("0x"))
         {
@@ -158,7 +158,7 @@ public:
         }
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000001c9e7f7ce9a1babf8943c45b775bb0c06f9edadfdac8b9a837219be9295"));
+        assert(hashGenesisBlock == uint256("0x00000eb5f889be57b038d089b84765f74105b72cb86933d53148f8898bba729b"));
         assert(genesis.hashMerkleRoot == uint256("0x693a8692d62a86e3065594c303d9f00fab103da5f50eef479a2cf1bf718b7aed"));
 
         vSeeds.push_back(CDNSSeedData("52.78.181.120", "52.78.181.120"));
