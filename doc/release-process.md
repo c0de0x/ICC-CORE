@@ -97,7 +97,7 @@ NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from 
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign ALQO Core for Linux, Windows, and OS X:
+### Build and sign ICC Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
     ./bin/gbuild --memory 3000 --commit icc=v${VERSION} ../icc/contrib/gitian-descriptors/gitian-linux.yml
@@ -260,6 +260,6 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/ALQO-Project/ALQO/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](hhttps://github.com/InternetCafeCoin/ICC-CORE/releases) with a link to the archived release notes.
 
   - Celebrate

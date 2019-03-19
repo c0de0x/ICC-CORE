@@ -89,7 +89,7 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 Copy iccd.init to /etc/init.d/iccd. Test by running "service iccd start".
 
 Using this script, you can adjust the path and flags to the iccd program by
-setting the ALQOD and FLAGS environment variables in the file
+setting the ICCD and FLAGS environment variables in the file
 /etc/sysconfig/iccd. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn
