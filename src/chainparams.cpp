@@ -142,10 +142,8 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0x693a8692d62a86e3065594c303d9f00fab103da5f50eef479a2cf1bf718b7aed"));
 
         vSeeds.push_back(CDNSSeedData("52.78.181.120", "52.78.181.120"));
-        //vSeeds.push_back(CDNSSeedData("dns1.internetcafe.com", "dns1.internetcafe.com"));
-        //vSeeds.push_back(CDNSSeedData("dns2.internetcafe.com", "dns2.internetcafe.com"));
-        //vSeeds.push_back(CDNSSeedData("dns3.internetcafe.com", "dns3.internetcafe.com"));
-        //vSeeds.push_back(CDNSSeedData("dns4.internetcafe.com", "dns4.internetcafe.com"));
+        vSeeds.push_back(CDNSSeedData("dns1.internetcafe.com", "dns1.internetcafe.com"));
+        vSeeds.push_back(CDNSSeedData("dns2.internetcafe.com", "dns2.internetcafe.com"));
         
 
         
