@@ -302,10 +302,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
 
     CAmount blockValue = GetBlockValue(pindexPrev->nHeight +1 );
     CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight +1, blockValue);
-    CAmount developerfeePayment = blockValue * 0.05;
-	
-    CBitcoinAddress developerfeeaddress("CRFvzJ1qiUf6XUzh95MVWYjqnXgHY8BDdY");
-    CScript developerfeescriptpubkey = GetScriptForDestination(developerfeeaddress.Get());
+	        
 
     if (hasPayment) {
         if (fProofOfStake) {
@@ -318,22 +315,26 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             txNew.vout.resize(i + 1);
             txNew.vout[i].scriptPubKey = payee;
             txNew.vout[i].nValue = masternodePayment;
-            LogPrintf("CreateNewBlock (POS): masternode to pay value %u\n", masternodePayment);
 
             //subtract mn payment from the stake reward
-            txNew.vout[i - 1].nValue -= masternodePayment;
-            LogPrintf("CreateNewBlock (POS): stakevalue to pay value %u\n", txNew.vout[i - 1].nValue);
+			if(txNew.vout[i - 1].nValue > masternodePayment) {
+	            txNew.vout[i - 1].nValue -= masternodePayment;
+				LogPrintf("fProofOfStake: after masternode pay %u\n", txNew.vout[i - 1].nValue);
+			} else {
+				uint64_t nSub = (masternodePayment / 2 / CENT) * CENT;
+				txNew.vout[i - 2].nValue -= nSub;
+				txNew.vout[i - 1].nValue -= masternodePayment - nSub;
+				LogPrintf("fProofOfStake: after masternode pay 1 %u\n", txNew.vout[i - 1].nValue);
+				LogPrintf("fProofOfStake: after masternode pay 2 %u\n", txNew.vout[i - 2].nValue);
+			}
+
+			LogPrintf("fProofOfStake: masternode to pay value %u\n", masternodePayment);
         } else {
-            txNew.vout.resize(3);
+            txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
 			LogPrintf("CreateNewBlock: masternode to pay value %u\n", masternodePayment);
-			
-            txNew.vout[2].scriptPubKey = developerfeescriptpubkey;
-            txNew.vout[2].nValue = developerfeePayment;
-			LogPrintf("CreateNewBlock: developerfee to pay value %u\n", developerfeePayment);
-			
-            txNew.vout[0].nValue = blockValue - developerfeePayment - masternodePayment;
+            txNew.vout[0].nValue = blockValue - masternodePayment;
 			LogPrintf("CreateNewBlock: blockvalue to pay value %u\n", blockValue);
         }
 
@@ -341,21 +342,13 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         ExtractDestination(payee, address1);
         CBitcoinAddress address2(address1);
 
-		CTxDestination addressdevfee1;
-        ExtractDestination(developerfeescriptpubkey, addressdevfee1);
-        CBitcoinAddress addressdevfee2(addressdevfee1);
-		
         LogPrintf("Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
-		LogPrintf("Developer-Fee payment of %s to %s\n", FormatMoney(developerfeePayment).c_str(), addressdevfee2.ToString().c_str());
     }
 }
 
 int CMasternodePayments::GetMinMasternodePaymentsProto()
 {    
-    if (IsSporkActive(SPORK_10_MASTERNODE_PAY_UPDATED_NODES))
-        return ActiveProtocol();                          // Allow only updated peers
-    else
-        return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT; // Also allow old peers as long as they are allowed to run
+    return ActiveProtocol();    
 }
 
 void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
