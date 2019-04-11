@@ -99,10 +99,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xba;
-        pchMessageStart[1] = 0xab;
-        pchMessageStart[2] = 0x87;
-        pchMessageStart[3] = 0x19;
+        pchMessageStart[0] = 0xbc;
+        pchMessageStart[1] = 0xc1;
+        pchMessageStart[2] = 0xb1;
+        pchMessageStart[3] = 0xdc;
         vAlertPubKey = ParseHex("04d20b9320f2eb1808b01116dd5ada62edff469b609e894c15d5dc73e64f052887a800ba197a63c897ddc6729737dfc0db3ef7a138a47770ad96981d898141cf23");
         nDefaultPort = 50578;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // ICC starting difficulty is 1 / 2^12  //20
@@ -150,8 +150,8 @@ public:
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28); // 'C'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2F)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x22)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
         // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md 109 	0x8000006d
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x77).convert_to_container<std::vector<unsigned char> >();
 
@@ -191,9 +191,9 @@ public:
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
         pchMessageStart[0] = 0x64;
-        pchMessageStart[1] = 0x44;
-        pchMessageStart[2] = 0x65;
-        pchMessageStart[3] = 0x54;
+        pchMessageStart[1] = 0x45;
+        pchMessageStart[2] = 0x66;
+        pchMessageStart[3] = 0xc4;
         vAlertPubKey = ParseHex("048fc0881c5e21ef9205c5f605635e8274bb1ca53607983885d228ab02e9cc93822c20113556d432ed5041e52ad6d2c50693bf717790cb55a8606ad38bab6105f6");
         nDefaultPort = 55600;
         nEnforceBlockUpgradeMajority = 51;
@@ -221,10 +221,10 @@ public:
 
 	    base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 90);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 195);
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x81)(0x62)(0xa1).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x81)(0x59)(0x38).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x01)(0x01)(0x02).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 196);
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x88)(0x62)(0xa1).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x88)(0x59)(0x38).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x02)(0x01)(0x02).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -260,10 +260,10 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
         strNetworkID = "regtest";
-        pchMessageStart[0] = 0x14;
-        pchMessageStart[1] = 0x54;
-        pchMessageStart[2] = 0x95;
-        pchMessageStart[3] = 0x64;
+        pchMessageStart[0] = 0x24;
+        pchMessageStart[1] = 0x14;
+        pchMessageStart[2] = 0x9a;
+        pchMessageStart[3] = 0x41;
         nSubsidyHalvingInterval = 150;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
