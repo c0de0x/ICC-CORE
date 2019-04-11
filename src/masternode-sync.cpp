@@ -335,6 +335,11 @@ void CMasternodeSync::Process()
                     return;
                 }
 
+                if(lastMasternodeWinner == 0 && GetTime() < 1521843144) {
+			        GetNextAsset();
+                    return;
+          		}
+
                 if (pnode->HasFulfilledRequest("mnwsync")) continue;
                 pnode->FulfilledRequest("mnwsync");
 
