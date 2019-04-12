@@ -80,7 +80,7 @@ static const Checkpoints::CCheckpointData dataTestnet = {
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0x0000060689a63ee9b0699608e571122628ae466fee1bf98c6d82173d381bd3cb"));
+    boost::assign::map_list_of(0, uint256("0x0000035d17c7ec19ccfa63d2aa1eae7e316936d66b2f92600d2e22bc6aece849"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
     1454124731,
@@ -304,7 +304,7 @@ public:
             printf("regtest block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         }
 
-       assert(hashGenesisBlock == uint256("0x00000fea76c2e8523777b3dce649c363b4c5e0234605cae551f8d822d17fcc16"));
+       assert(hashGenesisBlock == uint256("0x0000035d17c7ec19ccfa63d2aa1eae7e316936d66b2f92600d2e22bc6aece849"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
