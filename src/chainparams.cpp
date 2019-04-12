@@ -204,7 +204,7 @@ public:
         nTargetSpacing = 1 * 60;  // ICC: 1 minute
         nLastPOWBlock = 30;
         nMaturity = 10;
-        nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
+        nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 100000000 * COIN;
 
         genesis.nTime = 1552631354;
@@ -278,7 +278,7 @@ public:
 		
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 43444;
-//        assert(hashGenesisBlock == uint256("0x00000fea76c2e8523777b3dce649c363b4c5e0234605cae551f8d822d17fcc16"));
+       assert(hashGenesisBlock == uint256("0x00000fea76c2e8523777b3dce649c363b4c5e0234605cae551f8d822d17fcc16"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
