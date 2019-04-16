@@ -202,7 +202,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // ICC: 1 day
         nTargetSpacing = 1 * 60;  // ICC: 1 minute
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 200;
         nMaturity = 10;
         nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 100000000 * COIN;
